@@ -1,7 +1,6 @@
 import turtle
 import time
 import random
-import winsound
 
 player_dx = 15
 
@@ -18,7 +17,6 @@ def move_right():
     player.setx(x)
 
 def fire_bullet():
-    winsound.PlaySound('sounds/laser_sound.wav', winsound.SND_ASYNC)
     x = player.xcor()
     y = player.ycor()
     bullet.setposition(x, y + 30)
@@ -31,8 +29,8 @@ wn.bgcolor('black')
 wn.title("Space Invader")
 
 # register shapes
-turtle.register_shape('images/alien.gif')
-turtle.register_shape('images/rocket.gif')
+turtle.register_shape('alien.gif')
+turtle.register_shape('rocket.gif')
 
 # Draw border, 400x400 square
 border = turtle.Turtle()
@@ -106,8 +104,6 @@ while True:
     # check for collision
     if abs(bullet.xcor() - invader.xcor()) < 15 and \
             abs(bullet.ycor() - invader.ycor()) < 15:
-        # Sound
-        winsound.PlaySound('sounds/explosion_sound.wav', winsound.SND_ASYNC)
 
         # update the score
         score = score + 1
